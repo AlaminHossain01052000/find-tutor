@@ -14,13 +14,14 @@ const TutorApproval = () => {
   
 
   useEffect(() => {
-    const fetchPendingTutors = async () => {
+    const fetchPendingTutors =  () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/users');
-        setTutors(response.data.filter(t => t.userType === 'teacher' && !t.isApproved &&(t?.approvalStatus!='rejected')));
+        const response =  fetch('http://localhost:5000/api/users').then(res=>res.json()).then(data=>console.log(data));
+        // setTutors(response.data.filter(t => t.userType === 'teacher' && !t.isApproved &&(t?.approvalStatus==='pending')));
+        // console.log(response)
       } catch (err) {
         setError('Failed to fetch tutors');
-        console.error(err);
+        console.error("hms",err);
       } finally {
         setLoading(false);
       }

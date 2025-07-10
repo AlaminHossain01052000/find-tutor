@@ -1,0 +1,10 @@
+.booking-form {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border: 4px solid #0d6efd;
+}

@@ -149,7 +149,18 @@ export const TeacherDashboard = () => {
       </Container>
     );
   }
-
+  const getPic=(picString)=>{
+    let newPicString="";
+    for(let i=0;i<picString.length;++i){
+      if(picString[i]==='\\'){
+        newPicString+='/';
+        continue;
+      }
+      newPicString+=picString[i];
+    }
+    console.log(picString,newPicString)
+    return newPicString
+  }
   return (
     <Container className="my-5">
       <Row>
@@ -160,8 +171,8 @@ export const TeacherDashboard = () => {
               <div className="text-center mb-3">
                 {teacherData.profilePic && (
                   <img 
-                    src={`/uploads/${teacherData.profilePic}`} 
-                    alt="Profile" 
+                    src={`../../../../find-tutor-backend/uploads/nid-1750404149721-157732964.png`} 
+                    alt={teacherData.profilePic}
                     className="rounded-circle mb-2" 
                     style={{ width: '150px', height: '150px', objectFit: 'cover' }}
                   />

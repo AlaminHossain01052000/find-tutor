@@ -1,15 +1,21 @@
-import { Authentication } from './pages/Authentication/Authentication'
-import Dashboard from './pages/Dashboard/Dashboard'
+
 import { Home } from './pages/Home/Home'
 import Login from './pages/Login/Login'
 
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './shared/AuthProvider/AuthProvider'
-import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+
 import AdminRoute from './components/AdminRoute/AdminRoute'
-import TutorApproval from './components/TutorApproval/TutorApproval'
+
 import { ExploreTutors } from './pages/ExploreTutors/ExploreTutors'
+import TeacherRegistration from './components/TeacherRegistration/TeacherRegistration'
+import StudentRegistration from './components/StudentRegistration/StudentRegistration'
+import BookingForm from './components/BookingForm/BookingForm'
+import TutorRoute from './components/TutorRoute/TutorRoute'
+import TutorDashboard from './components/TutorDashboard/TutorDashboard'
+import AdminDashboard from './components/AdminDashboard/AdminDashboard'
+import Payment from './components/Payment/Payment'
 function App() {
 
 
@@ -19,25 +25,31 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' Component={Home} />
-            <Route path='/registration' Component={Authentication} />
+
+            <Route path='/register/tutor' Component={TeacherRegistration} />
+            <Route path='/register/student' Component={StudentRegistration} />
             <Route path='/login' Component={Login} />
             <Route path='/explore-tutors' Component={ExploreTutors} />
+            <Route path='/booking-form/:id' Component={BookingForm} />
+            <Route path='/payment/:id' Component={Payment} />
+
             <Route
-              path="/dashboard"
-              element={
-                <PrivateRoute>
-                  <Dashboard/>
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/dashboard/admin/tutorApproval"
+              path="/admin-dashboard"
               element={
                 <AdminRoute>
-                  <TutorApproval/>
+                  <AdminDashboard />
                 </AdminRoute>
               }
             />
+            <Route
+              path="/tutor-dashboard"
+              element={
+                <TutorRoute>
+                  <TutorDashboard />
+                </TutorRoute>
+              }
+            />
+
           </Routes>
 
         </BrowserRouter>

@@ -12,8 +12,8 @@ const Tutors = () => {
   useEffect(() => {
     const fetchTutors = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/users');
-        const teacherTutors = response.data.filter(t => t.userType === 'teacher');
+        const response = await axios.get('http://localhost:5000/api/teachers');
+        const teacherTutors = response.data.filter(t => t.approvalStatus === 'approved');
         setTutors(teacherTutors);
       } catch (err) {
         setError('Failed to load tutors');

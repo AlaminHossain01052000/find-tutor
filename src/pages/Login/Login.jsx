@@ -94,7 +94,7 @@ const Login = () => {
             <span>Don't have an account? </span>
             <Button 
               variant="link" 
-              onClick={() => navigate('/registration')}
+              onClick={() => navigate('/register/student')}
               className="p-0"
             >
               Register

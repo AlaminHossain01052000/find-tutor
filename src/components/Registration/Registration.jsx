@@ -19,7 +19,8 @@ const Registration = () => {
   nid: null,         // File object
   documents: null,    // File object
   profilePic: null,   // File object
-  introVideo: null    // File object (optional)
+  introVideo: null,    // File object (optional)
+  approvalStatus:"pending"
 });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);

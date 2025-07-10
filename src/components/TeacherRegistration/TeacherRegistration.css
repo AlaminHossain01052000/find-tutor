@@ -1,0 +1,26 @@
+.teacher-registration {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form .form-label {
+  font-weight: 600;
+}
+
+.registration-form .form-control {
+  border-radius: 10px;
+}
+
+.categories-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.registration-form button {
+  font-size: 1.1rem;
+  padding: 10px;
+  border-radius: 10px;
+}

@@ -4,22 +4,21 @@ import { FaStar, FaRegStar, FaMapMarkerAlt, FaMoneyBillWave } from 'react-icons/
 
 import './Tutor.css';
 import StarRating from '../StarRating/StarRating';
+import { useNavigate } from 'react-router-dom';
 
 const Tutor = ({ tutor }) => {
-  const calculateRating = () => {
-    if (!tutor.ratings || tutor.ratings === 0) return 0;
-    return tutor.ratings / (tutor.isRatedYet ? 1 : 5); // Simple rating calculation
-  };
-
-  const rating = calculateRating();
-
+  const {profilePic,rating,chargePerHour,firstName,lastName,categories,educationalQualification,_id}=tutor||{}
+  const navigate=useNavigate()
+  const handleNavigate=()=>{
+    navigate(`/booking-form/${_id}`)
+  }
   return (
     <Card className="tutor-card">
       <div className="profile-image-container">
         <Card.Img 
           variant="top" 
-          src={tutor.profilePic ? `/uploads/${tutor.profilePic.replace(/\\/g, '/')}` : '/default-profile.jpg'} 
-          alt={`${tutor.firstName} ${tutor.lastName}`}
+          src={profilePic} 
+          alt={`${firstName} ${lastName}`}
         />
         <div className="rating-badge">
           <StarRating rating={rating} />
@@ -31,16 +30,14 @@ const Tutor = ({ tutor }) => {
         <div className="tutor-header">
           <Card.Title>{tutor.firstName} {tutor.lastName}</Card.Title>
           <div className="hourly-rate">
-            <FaMoneyBillWave /> ৳{tutor.hourlyRate || 'N/A'}/hr
+            <FaMoneyBillWave /> ৳ {chargePerHour || 'N/A'}/hr
           </div>
         </div>
 
-        <Card.Subtitle className="mb-2 text-muted">
-          <FaMapMarkerAlt /> {tutor.location || 'Remote'}
-        </Card.Subtitle>
+
 
         <div className="tutor-skills">
-          {tutor.categories?.map((category, index) => (
+          {categories?.map((category, index) => (
             <Badge key={index} bg="primary" className="me-1 mb-1">
               {category}
             </Badge>
@@ -48,12 +45,12 @@ const Tutor = ({ tutor }) => {
         </div>
 
         <Card.Text className="tutor-bio">
-          {tutor.bio || `${tutor.qualification} with teaching experience`}
+          {educationalQualification}
         </Card.Text>
 
         <div className="tutor-footer">
-          <Button variant="primary" className="view-profile-btn">
-            View Profile
+          <Button variant="primary" className="view-profile-btn" onClick={handleNavigate}>
+            Book Now
           </Button>
           <Button variant="outline-primary">
             Message

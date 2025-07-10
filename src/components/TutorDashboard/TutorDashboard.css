@@ -1,0 +1,18 @@
+.tutor-dashboard {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.sidebar {
+  background-color: #ffffff;
+  min-height: 100vh;
+  border-right: 1px solid #dee2e6;
+}
+
+.content-area {
+  background-color: #f0f2f5;
+}
+
+.card {
+  min-height: 300px;
+}

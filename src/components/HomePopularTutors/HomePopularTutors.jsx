@@ -1,37 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import HomePopularTutor from '../HomePopularTutor/HomePopularTutor';
 
 export const HomePopularTutors = () => {
+  const [tutors,setTutors]=useState([]);
+  const [loading,setLoading]=useState(true);
+  const [error,setError]=useState(null)
+  useEffect(()=>{
+    try {
+      fetch("http://localhost:5000/api/teachers").then(res=>res.json()).then(data=>{
+        setTutors(data.sort((a,b)=>b.rating-a.rating).slice(0,Math.min(3,data.length)));
+      })
+      setError(null)
+    } catch (error) {
+      setError(error.message);
+    }
+    finally{
+      setLoading(false);
+
+    }
+    
+  },[])
   return (
     <div className='container'>
       <div className='my-5'>
         <h1 className='fw-bold text-primary'>Popular Tutors</h1>
       </div>
       <div class="card-group">
-  <div class="card">
-    <img src="..." class="card-img-top" alt="..."/>
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img src="..." class="card-img-top" alt="..."/>
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img src="..." class="card-img-top" alt="..."/>
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-</div>
+        {tutors.map(tutor=><HomePopularTutor key={tutor._id} tutor={tutor}/>)}
+
+      </div>
     </div>
   )
 }

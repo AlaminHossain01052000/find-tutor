@@ -3,7 +3,7 @@ import { Container, Spinner, Alert } from 'react-bootstrap';
 
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
-import { AdminDashboard } from '../../components/AdminDashboard/AdminDashboard';
+
 import { TeacherDashboard } from '../../components/TeacherDashboard/TeacherDashboard';
 import { StudentDashboard } from '../../components/StudentDashboard/StudentDashboard';
 
@@ -17,6 +17,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
+        console.log(user)
         if (!user?.email) return;
         
         const response = await axios.get(`http://localhost:5000/api/users/byEmail?email=${(user.email)}`);
@@ -40,8 +41,7 @@ const Dashboard = () => {
   const renderDashboard = () => {
     if (!userInfo) return null;
     console.log(admin)
-    if(admin)
-        return <AdminDashboard/>;
+    
     switch (userInfo.userType) {
       
       case 'teacher':

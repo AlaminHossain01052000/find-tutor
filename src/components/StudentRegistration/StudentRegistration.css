@@ -1,0 +1,25 @@
+.student-registration {
+  background-color: #fefefe;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 720px;
+  margin: auto;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form .form-label {
+  font-weight: 600;
+  color: #343a40;
+}
+
+.registration-form .form-control {
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.registration-form button {
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 10px;
+  font-size: 1.1rem;
+}
