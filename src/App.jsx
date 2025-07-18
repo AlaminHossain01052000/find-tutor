@@ -16,6 +16,8 @@ import TutorRoute from './components/TutorRoute/TutorRoute'
 import TutorDashboard from './components/TutorDashboard/TutorDashboard'
 import AdminDashboard from './components/AdminDashboard/AdminDashboard'
 import Payment from './components/Payment/Payment'
+import StudentRoute from './components/StudentRoute/StudentRoute'
+import StudentDashboard from './components/StudentDashboard/StudentDashboard'
 function App() {
 
 
@@ -47,6 +49,14 @@ function App() {
                 <TutorRoute>
                   <TutorDashboard />
                 </TutorRoute>
+              }
+            />
+            <Route
+              path="/student-dashboard"
+              element={
+                <StudentRoute>
+                  <StudentDashboard />
+                </StudentRoute>
               }
             />
 

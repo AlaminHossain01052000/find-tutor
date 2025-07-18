@@ -59,7 +59,7 @@ const [classId,setClassId]=useState(null)
     };
 
     fetchData();
-  }, [id, user]);
+  }, [id, user,studentId]);
 
   const handleDayChange = (e) => {
     const selectedDateStr = e.target.value;
@@ -127,7 +127,7 @@ const [classId,setClassId]=useState(null)
     if (classRes.ok && updateRes.ok) {
       setTeacher(prev => ({
         ...prev,
-        slots: prev.slots.map(slot =>
+        slots: prev?.slots?.map(slot =>
           slot.day === next7Days.find(day => day.value === selectedDay).short &&
           slot.time === selectedTime
             ? { ...slot, isBooked: true }
@@ -188,7 +188,7 @@ const [classId,setClassId]=useState(null)
                 <p><strong>Email:</strong> {email}</p>
                 <p><strong>Date of Birth:</strong> {new Date(dob).toLocaleDateString()}</p>
                 <p><strong>Categories:</strong></p>
-                {categories.map((cat, idx) => (
+                {categories?.map((cat, idx) => (
                   <Badge key={idx} bg="primary" className="me-2">{cat}</Badge>
                 ))}
 
@@ -206,7 +206,7 @@ const [classId,setClassId]=useState(null)
                     value={selectedDay}
                   >
                     <option value="">Select Day</option>
-                    {next7Days.map((day, idx) => (
+                    {next7Days?.map((day, idx) => (
                       <option key={idx} value={day.value}>{day.label}</option>
                     ))}
                   </Form.Select>
@@ -221,7 +221,7 @@ const [classId,setClassId]=useState(null)
                       {availableTimeSlots.length === 0 ? (
                         <option disabled>No available slots</option>
                       ) : (
-                        availableTimeSlots.map((time, idx) => (
+                        availableTimeSlots?.map((time, idx) => (
                           <option key={idx} value={time}>{time}</option>
                         ))
                       )}

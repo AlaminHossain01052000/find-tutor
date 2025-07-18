@@ -138,6 +138,38 @@ const useFirebase = () => {
             console.error("❌ Error updating password:", error.message);
         }
     };
+    const updateStudentPassword = async (newPassword, navigate, studentId, password, confirmPassword) => {
+        try {
+            const user = auth.currentUser;
+
+            if (!user) throw new Error("User not authenticated");
+
+            await updatePassword(user, newPassword);
+            const updateBackendPassword = async (studentId, password, confirmPassword) => {
+                try {
+                    const res = await fetch(`http://localhost:5000/api/students/update-password/${studentId}`, {
+                        method: "PATCH",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ password, confirmPassword}),
+                    });
+
+                    const result = await res.json();
+
+                    if (!res.ok) throw new Error(result.error);
+                    console.log(result.message);
+                } catch (error) {
+                    console.log(error)
+                }
+
+            };
+            await updateBackendPassword(studentId, password, confirmPassword);
+            await logoutUser()
+            navigate('/login')
+            console.log("✅ Password updated successfully");
+        } catch (error) {
+            console.error("❌ Error updating password:", error.message);
+        }
+    };
     const logoutUser = async () => {
         setLoading(true);
         await signOut(auth).then(() => {
@@ -223,7 +255,8 @@ const useFirebase = () => {
         error,
         token,
         deleteUser,
-        updateUserPassword
+        updateUserPassword,
+        updateStudentPassword
 
     }
 }

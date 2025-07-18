@@ -39,7 +39,7 @@ export const HomeNavabr = () => {
             </li>
 
             <li className="nav-item">
-              <Link className="nav-link" to="/dashboard">
+              <Link className="nav-link" to="/student-dashboard">
                 Dashboard
               </Link>
             </li>
