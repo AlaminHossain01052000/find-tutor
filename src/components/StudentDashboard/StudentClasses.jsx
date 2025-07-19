@@ -295,12 +295,9 @@ const StudentClasses = ({ studentId }) => {
                                 <thead>
                                     <tr>
                                         <th>Date & Time</th>
-                                        
-                                        {/* <th>Teacher</th> */}
                                         <th>Status</th>
                                         <th>Payment</th>
                                         <th>Actions</th>
-                                        <th>Note Link</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -316,7 +313,7 @@ const StudentClasses = ({ studentId }) => {
                                                 </small>
                                             </td>
                                             
-                                           
+                                            
                                             <td>
                                                 <Badge bg={getStatusColor(cls.status)}>
                                                     {cls.status.toUpperCase()}
@@ -379,9 +376,6 @@ const StudentClasses = ({ studentId }) => {
                                                         </Button>
                                                     )}
                                                 </div>
-                                            </td>
-                                            <td>
-                                                {cls?.notesLink}
                                             </td>
                                         </tr>
                                     ))}

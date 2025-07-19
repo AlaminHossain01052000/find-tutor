@@ -62,13 +62,7 @@ const StudentDashboard = ({ studentId }) => {
           >
             My Profile
           </Button>
-          <Button
-            variant={activeSection === "rate" ? "primary" : "outline-primary"}
-            className="w-100"
-            onClick={() => setActiveSection("rate")}
-          >
-            Rate Teacher
-          </Button>
+         
         </Col>
 
         {/* Content */}
